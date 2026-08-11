@@ -1,0 +1,13 @@
+version: 0.0
+
+os: linux
+
+files:
+  - source: build/
+    destination: /var/www/html/reactnode/frontend/build/
+
+hooks:
+  AfterInstall:
+    - location: scripts/restart-apache.sh
+      timeout: 300
+      runas: root
