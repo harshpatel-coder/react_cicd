@@ -22,6 +22,7 @@ phases:
       - echo "Build completed"
 
 artifacts:
-  base-directory: build
   files:
-    - '**/*'
+    - appspec.yml
+    - scripts/**/*
+    - build/**/*
