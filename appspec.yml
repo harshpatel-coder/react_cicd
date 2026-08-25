@@ -1,13 +1,15 @@
 version: 0.0
-
 os: linux
 
 files:
-  - source: build/
-    destination: /var/www/html/reactnode/frontend/build/
+  - source: /
+    destination: /var/www/html/admin
+    overwrite: true
+    
+file_exists_behavior: OVERWRITE
 
 hooks:
   AfterInstall:
-    - location: scripts/restart-apache.sh
+    - location: start_server.sh
       timeout: 300
-      runas: root
+      runas: ubuntu
