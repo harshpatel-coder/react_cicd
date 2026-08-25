@@ -2,27 +2,16 @@ version: 0.2
 
 phases:
   install:
+    runtime-versions:
+      nodejs: 23
     commands:
-      - node --version
-      - npm --version
-      - npm install
-
-  pre_build:
-    commands:
-      - echo "Pre-build phase"
-      - node --version
-
+      - npm -f install
   build:
     commands:
-      - echo "Building React application..."
-      - NODE_OPTIONS=--openssl-legacy-provider npm run build
-
-  post_build:
-    commands:
-      - echo "Build completed"
-
+      - npm run build
+      - cp appspec.yml dist/
+      - cp start_server.sh dist/
 artifacts:
   files:
-    - appspec.yml
-    - scripts/**/*
-    - build/**/*
+    - '**/*'
+  base-directory: dist
